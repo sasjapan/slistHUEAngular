@@ -1,0 +1,28 @@
+<h1>Item-Formular</h1 >
+<form class= "ui large form" [formGroup]= "itemForm ">
+     <!-- (ngSubmit)= "itemForm()" > -->
+  <input type= "hidden" name= "id" >
+  <div class= "field" >
+    <label >Name des Items: </label >
+    <input formControlName= "itemname" >
+    <div *ngIf= " errors.itemname" class= "ui negative message">{{errors.itemname
+      }} </div >
+  </div >
+  <div class= "field"  >
+    <label >Maximaler Preis: </label >
+    <input formControlName= "id" >
+    <div *ngIf= "errors.maxPrice" class= "ui negative message" >{{errors.maxPrice }}
+    </div >
+  </div >
+
+  <div class= "field" >
+    <label >Anzahl: </label >
+    <input type= "number" formControlName= "done" >
+    <div *ngIf= "errors.amount" class= "ui negative message" >{{
+        errors.amount }}</div >
+  </div >
+
+  <button type= "submit"  class= "ui button" routerLink="../"
+          [disabled]= "itemForm.invalid">Speichern</button >
+</form >
+

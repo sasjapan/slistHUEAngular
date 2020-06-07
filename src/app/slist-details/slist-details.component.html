@@ -1,0 +1,96 @@
+
+
+  <div class="twelve wide column">
+    <h1 class="ui header">Name: {{slist.list_name}}</h1>
+    <div class="ui divider"></div>
+    <div class="ui grid">
+      <!--   <div class="four wide column">
+
+               <h4 class="ui header">Feedback</h4>
+        <span *ngFor="let feedback of slist.feedback; last as l">
+              {{feedback.description}}
+          <b>{{feedback.userid}}</b><span *ngIf="!l">,
+    tton (click)=" addNewFeedback()" class="ui red button"
+                  type="button">Feedback hinzufügen
+  <i class="right aligned plus icon"></i>
+ </button>
+ </span>
+ </span>
+      </div>-->
+      <div class="four wide column">
+        <h4 class="ui header">ID der Liste:</h4>
+        {{slist?.id}}
+      </div>
+      <div class="four wide column">
+        <h4 class="ui header">Fälligkeitsdatum: </h4>
+        {{slist?.duedate}}
+      </div>
+      <div *ngIf="isSearchingForHelp() ==false" class= "description" (click) = 'updateHelper()'>Liste annehmen? <button class="ui white button icon"><i class="check icon"></i></button></div >
+      <div *ngIf="slist.done ==true" (click) = 'updateDone()'>Liste erledigen? <button class="ui red button icon"><i class="check icon"></i></button></div >
+      <div *ngIf="slist.done ==false" (click) = 'updateDone()'>Liste wieder öffnen? <button class="ui green button icon"><i class="check icon"></i></button></div >
+
+
+    </div>
+
+    <div *ngIf="items$ && items$.length >0">
+<h2>Items: </h2>
+    <div *ngFor= "let item of items$">
+    <span>
+       <b>Name: </b> {{item.name }}
+        <b>Anzahl: </b>{{item.amount }}
+        <b>Maximaler Preis: </b>{{item.maxPrice}}
+      </span>
+  </div>
+  </div>
+    </div>
+
+
+<!--<button (click)=" addNewItem()" class="ui red button"
+        type="button">Item hinzufügen
+  <i class="right aligned plus icon"></i>
+</button>
+<br/><br/>
+<button (click)=" addNewFeedback()" class="ui red button"
+        type="button">Feedback hinzufügen
+  <i class="right aligned plus icon"></i>
+</button>
+
+</div>-->
+
+
+<div style="margin-top: 30px">
+<button [routerLink]="'/slists'" class="ui red button">Zurück zur
+  Shoppingliste</button>
+
+<button *ngIf="authService.isLoggedIn()" class="ui teal button labeled icon" (click) = 'removeList()'>
+   Liste löschen <i class="remove icon"></i>
+</button></div>
+
+
+<!--
+<button class= "ui tiny red labeled icon button"
+(click)= "removeList()" >
+<i class= "remove icon" ></i >Liste löschen
+</button >
+
+<a class = "ui tiny yellow labeled icon button"
+   [routerLink]= "['../../admin', slist?.list_id]" >
+  <i class = "write icon" ></i> Liste bearbeiten
+</a>
+
+
+<h4 class = "ui header" > Fälligkeitsdatum: </h4>
+{{ slist?.duedate | date: 'longDate'}}
+
+<button *ngIf= "authService.isLoggedIn()" class= "ui tiny red labeled icon
+button"
+(click)= " removeList()" >
+<i class= "remove icon" ></i > Liste löschen
+</button >
+<a *ngIf= "authService.isLoggedIn()" class= "ui tiny yellow labeled icon
+button"
+[routerLink]= "['../../admin', slist ?.list_id]" >
+<i class= "write icon" ></i > Liste bearbeiten
+</a >
+
+-->

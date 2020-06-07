@@ -1,0 +1,10 @@
+<script>
+
+</script><div class="ui three item tabs menu">
+  <a *ngIf="isLoggedIn() && isSearchingForHelp() == true" routerLink="slists" routerLinkActive="active" class="item">Meine Listen</a>
+  <a *ngIf="isSearchingForHelp() == false" routerLink="slists" routerLinkActive="active" class="item">Alle Listen</a>
+  <a *ngIf="isLoggedIn() && isSearchingForHelp() == false" routerLink="admin" routerLinkActive="active" class="item">Angenommene Listen</a>
+
+  <a routerLink="login" routerLinkActive="active" class="item">{{ getLoginLabel() }}</a>
+</div>
+<router-outlet></router-outlet>

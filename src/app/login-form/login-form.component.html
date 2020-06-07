@@ -1,0 +1,26 @@
+<!--<a *ngIf="!isSearchingForHelp()" routerLink="../addslist" class="ui red button">
+  Liste hinzufügen
+  <i class="right aligned plus icon"></i>
+</a>-->
+<h3 *ngIf="isLoggedIn() && isSearchingForHelp() == false" style="color: black">Hier findest du
+  deine angenommenen Listen</h3>
+
+<div *ngIf=" slists$ | async as slists; else loading ">
+  <a *ngFor="let slist of slists ">
+    <div *ngIf="currentHelper() == slist.helper_id || slist.helper_id != null">
+
+      <h2 style="color: black">Angenommen von: {{slist.helper_id}}</h2>
+      <a class="item bs-slist-list-item" style="color: black" [slist]="slist "
+         routerLink="../slists/{{slist.id}} ">
+      </a>
+      <p *ngIf="currentHelper() != slist.helper_id || slists.length <= 0">Du hast noch keine Listen angenommen.</p>
+    </div>
+  </a>
+
+</div>
+
+<ng-template #loading>
+  <div class="ui active dimmer">
+    <div class="ui large text loader">Daten werden geladen...</div>
+  </div>
+</ng-template>

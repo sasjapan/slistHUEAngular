@@ -1,0 +1,41 @@
+<!-- Ansicht für Hilfesuchende-->
+<div class= "content" >
+  <div *ngIf="slist.done == true && isSearchingForHelp()" style="background: mediumseagreen">
+<div class= "header">{{slist.list_name}}</div >
+<div class= "description" > {{slist.duedate }} </div >
+  <div class= "description" >Erledigt: offen</div >
+<div class= "extra" >ID: {{ slist.id }}</div >
+    <div class= "extra" >Liste gehört User mit der ID: {{ slist.creator_id }}</div >
+</div >
+  <div *ngIf="slist.done == false && isSearchingForHelp()" style="background: indianred">
+    <div class= "header">    <b><i class="check icon"></i></b>{{slist.list_name}}</div >
+    <div class= "description" > {{slist.duedate }} </div >
+    <div class= "description" >Erledigt: abgeschlossen </div >
+    <div class= "extra" >ID: {{ slist.id }}</div >
+    <div class= "extra" >Liste gehört User mit der ID: {{ slist.creator_id }}</div >
+  </div >
+</div>
+
+
+<!-- Ansicht für Helfer-->
+  <div class= "content" >
+    <div *ngIf="slist.done == true && isSearchingForHelp() == false" style="background: mediumseagreen">
+      <div class= "header">{{slist.list_name}}</div >
+      <div class= "description" > {{slist.duedate }} </div >
+      <div class= "description" >Erledigt: offen</div >
+      <div class= "extra" >ID: {{ slist.id }}</div >
+      <div class= "extra" >Liste gehört User mit der ID: {{ slist.creator_id }}</div >
+
+    </div >
+    <div *ngIf="slist.done == false && isSearchingForHelp() == false" style="background: indianred">
+      <div class= "header">    <b><i class="check icon"></i></b>{{slist.list_name}}</div >
+      <div class= "description" > {{slist.duedate }} </div >
+      <div class= "description" >Erledigt: abgeschlossen </div >
+      <div class= "extra" >ID: {{ slist.id }}</div >
+      <div class= "extra" >Liste gehört User mit der ID: {{ slist.creator_id }}</div >
+    </div >
+
+  </div>
+
+
+

@@ -1,0 +1,54 @@
+<h1>Listen-Formular</h1>
+<form class="ui large form" [formGroup]="listForm "
+      (ngSubmit)=" submitForm()">
+  <input type="hidden" name="id">
+  <div class="field">
+    <label>Listen Name: </label>
+    <input formControlName="list_name">
+    <div *ngIf=" errors.list_name" class="ui negative message"> {{errors.list_name
+      }} </div>
+  </div>
+  <div class="field">
+    <label>Fälligkeitsdatum: </label>
+    <input type="date" formControlName="duedate">
+    <div *ngIf="errors.duedate" class="ui negative message">{{
+        errors.duedate}}</div>
+  </div>
+
+
+  <div class="field">
+    <h1>Item-Formular</h1 >
+    <div formArrayName="items">
+      <div class="three fields" *ngFor="let item of items.controls ; index
+as i; last as l" [formGroupName]=" i ">
+        <input type="hidden" name="id">
+        <div class= "field" >
+          <label >Name des Items: </label >
+          <input formControlName= "name" >
+          <div *ngIf= " errors.itemname" class= "ui negative message">{{errors.itemname
+            }} </div >
+        </div >
+        <div class= "field"  >
+          <label >Maximaler Preis: </label >
+          <input formControlName= "maxPrice" >
+          <div *ngIf= "errors.maxPrice" class= "ui negative message" >{{errors.maxPrice }}
+          </div >
+        </div >
+        <div class= "field" >
+          <label >Anzahl: </label >
+          <input type= "number" formControlName= "amount" >
+          <div *ngIf= "errors.amount" class= "ui negative message" >{{
+              errors.amount }}</div >
+        </div >
+      </div>
+    </div>
+    <button (click)=" addNewItem()" class="ui red button"
+            type="button">  Item hinzufügen
+      <i class="right aligned plus icon"></i>
+    </button>
+  </div>
+  <button type="submit" class="ui button"
+          [disabled]="listForm.invalid">Speichern
+  </button>
+</form>
+
